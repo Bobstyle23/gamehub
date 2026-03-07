@@ -12,7 +12,7 @@ function GenreSkeleton() {
       <ListItem>
         <HStack align="center" spacing={5} paddingY={2}>
           <SkeletonCircle size="32px" />
-          <Skeleton height="32px" width="140px" />
+          <Skeleton height="32px" width="120px" />
         </HStack>
       </ListItem>
     </List>
