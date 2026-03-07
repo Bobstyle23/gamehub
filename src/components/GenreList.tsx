@@ -28,11 +28,12 @@ function GenreList({ onSelectGenre, selectedGenre }: Props) {
 
   return (
     <>
-      {isLoading &&
-        skeletons.map((skeleton) => <GenreSkeleton key={skeleton} />)}
       <Heading fontSize={"2xl"} marginBottom={3}>
         Genres
       </Heading>
+      {isLoading &&
+        skeletons.map((skeleton) => <GenreSkeleton key={skeleton} />)}
+
       <List>
         {data.map((genre) => (
           <ListItem key={genre.id} paddingY="6px">
