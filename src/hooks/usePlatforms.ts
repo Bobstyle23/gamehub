@@ -1,4 +1,3 @@
-// import useData from "./useData";
 import platforms from "../data/platforms";
 
 export interface Platform {
@@ -6,10 +5,6 @@ export interface Platform {
   name: string;
   slug: string;
 }
-
-// function usePlatforms() {
-//   return useData<Platform>("/platforms/lists/parents");
-// }
 
 function usePlatforms() {
   return { data: platforms, isLoading: false, error: null };
