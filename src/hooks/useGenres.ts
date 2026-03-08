@@ -1,3 +1,4 @@
+// import useData from "./useData";
 import genres from "../data/genres";
 
 export interface Genre {
@@ -5,6 +6,10 @@ export interface Genre {
   name: string;
   image_background: string;
 }
+
+// function useGenres() {
+//   return useData<Genre>("/genres");
+// }
 
 function useGenres() {
   return { data: genres, isLoading: false, error: null };
