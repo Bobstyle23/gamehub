@@ -35,7 +35,7 @@ function GenreList({ onSelectGenre, selectedGenre }: Props) {
         skeletons.map((skeleton) => <GenreSkeleton key={skeleton} />)}
 
       <List>
-        {genres?.map((genre) => (
+        {genres?.results.map((genre) => (
           <ListItem key={genre.id} paddingY="6px">
             <HStack>
               <Image
