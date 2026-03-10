@@ -9,14 +9,12 @@ export interface Platform {
   slug: string;
 }
 
-function usePlatforms() {
-  const { data, isLoading, error } = useQuery<FetchResponse<Platform>, Error>({
+const usePlatforms = () =>
+  useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,
-    initialData: { count: platforms.length, results: platforms },
+    initialData: { count: platforms.length, results: platforms, next: null },
   });
-  return { data, isLoading, error };
-}
 
 export default usePlatforms;

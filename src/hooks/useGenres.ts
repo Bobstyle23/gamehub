@@ -10,15 +10,12 @@ export interface Genre {
   image_background: string;
 }
 
-function useGenres() {
-  const { data, isLoading, error } = useQuery<FetchResponse<Genre>, Error>({
+const useGenres = () =>
+  useQuery<FetchResponse<Genre>>({
     queryKey: ["genres"],
-    queryFn: apiClient.getAll,
+    queryFn: () => apiClient.getAll(),
     staleTime: 24 * 60 * 60 * 1000, //24h
-    initialData: { count: genres.length, results: genres },
+    initialData: { count: genres.length, results: genres, next: null },
   });
-
-  return { data, isLoading, error };
-}
 
 export default useGenres;
