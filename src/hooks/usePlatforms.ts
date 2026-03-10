@@ -3,6 +3,7 @@ import platforms from "../data/platforms";
 import APIClient, { FetchResponse } from "../services/api-client";
 
 const apiClient = new APIClient<Platform>("/parent_platforms");
+
 export interface Platform {
   id: number;
   name: string;
