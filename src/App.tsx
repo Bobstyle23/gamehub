@@ -3,14 +3,13 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
-import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
-  genre: Genre | null;
+  genreId: number;
   platform: Platform | null;
   sortOrder: string;
   searchValue: string;
@@ -40,9 +39,9 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre: Genre) =>
-              setGameQuery({ ...gameQuery, genre })
+            selectedGenre={gameQuery.genreId}
+            onSelectGenre={(genreId: number) =>
+              setGameQuery({ ...gameQuery, genreId })
             }
           />
         </GridItem>
