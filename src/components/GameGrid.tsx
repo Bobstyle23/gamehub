@@ -13,14 +13,10 @@ interface Props {
 
 function GameGrid({ gameQuery }: Props) {
   const pageSize = 10;
-  const {
-    data,
-    error,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useGames(gameQuery, pageSize);
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames(
+    gameQuery,
+    pageSize,
+  );
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -33,7 +29,7 @@ function GameGrid({ gameQuery }: Props) {
       dataLength={games.length}
       next={fetchNextPage}
       hasMore={Boolean(hasNextPage)}
-      loader={<Spinner />}
+      loader={<Spinner marginTop={3} marginLeft={3} />}
       endMessage={<Text textStyle="5xl">No more Games to load</Text>}
     >
       <SimpleGrid
