@@ -52,7 +52,7 @@ function App() {
           <Flex marginBottom={5}>
             <Box marginRight={5}>
               <PlatformSelector
-                selectedPlatform={gameQuery.platformId}
+                selectedPlatformId={gameQuery.platformId}
                 onSelectPlatform={(platformId: number) =>
                   setGameQuery({ ...gameQuery, platformId })
                 }
