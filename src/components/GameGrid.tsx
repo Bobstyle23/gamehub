@@ -28,7 +28,11 @@ function GameGrid({ gameQuery }: Props) {
       next={fetchNextPage}
       hasMore={Boolean(hasNextPage)}
       loader={<Spinner marginTop={3} marginLeft={3} />}
-      endMessage={<Text textStyle="5xl">No more Games to load</Text>}
+      endMessage={
+        <Text textStyle="5xl" fontSize="2xl" marginY={3} marginLeft={3}>
+          No more Games to load
+        </Text>
+      }
     >
       <SimpleGrid
         padding="10px"
