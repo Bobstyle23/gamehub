@@ -12,11 +12,9 @@ interface Props {
 }
 
 function GameGrid({ gameQuery }: Props) {
-  const pageSize = 10;
-  const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames(
-    gameQuery,
-    pageSize,
-  );
+  // const pageSize = 10;
+  const { data, error, isLoading, fetchNextPage, hasNextPage } =
+    useGames(gameQuery);
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

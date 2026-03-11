@@ -15,7 +15,7 @@ export interface Game {
   rating_top: number;
 }
 
-function useGames(gameQuery: GameQuery, pageSize: number) {
+function useGames(gameQuery: GameQuery, pageSize?: number) {
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>
@@ -26,7 +26,7 @@ function useGames(gameQuery: GameQuery, pageSize: number) {
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchValue,
           page: pageParam,
-          page_size: pageSize,
+          // page_size: pageSize,
         },
       }),
     keepPreviousData: true,
