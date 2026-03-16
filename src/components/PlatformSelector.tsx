@@ -7,8 +7,9 @@ import useGameQueryStore from "../stores/gameQueryStore";
 function PlatformSelector() {
   const { data: platforms, error, isLoading } = usePlatforms();
 
-  const { gameQuery, setPlatformId } = useGameQueryStore();
-  const { selectedPlatformName } = usePlatform(gameQuery?.platformId || 0);
+  const platformId = useGameQueryStore((store) => store.gameQuery.platformId);
+  const setPlatformId = useGameQueryStore((store) => store.setPlatformId);
+  const { selectedPlatformName } = usePlatform(platformId || 0);
 
   if (error) return null;
 

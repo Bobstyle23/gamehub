@@ -13,8 +13,8 @@ import GenreSkeleton from "./GenreSkeleton";
 
 function GenreList() {
   const { data: genres, isLoading, error } = useGenres();
-  const { setGenreId, gameQuery } = useGameQueryStore();
-
+  const selectedGenreId = useGameQueryStore((store) => store.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((store) => store.setGenreId);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   if (error) return null;
@@ -45,7 +45,7 @@ function GenreList() {
                 onClick={() => setGenreId(genre.id)}
                 variant="link"
                 fontSize="lg"
-                fontWeight={genre.id == gameQuery.genreId ? "bold" : "normal"}
+                fontWeight={genre.id == selectedGenreId ? "bold" : "normal"}
                 whiteSpace="normal"
                 textAlign="left"
               >

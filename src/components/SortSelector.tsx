@@ -8,7 +8,8 @@ export type SortOrder = {
 };
 
 function SortSelector() {
-  const { gameQuery, setSortOrder } = useGameQueryStore();
+  const sortOrder = useGameQueryStore((store) => store.gameQuery.sortOrder);
+  const setSortOrder = useGameQueryStore((store) => store.setSortOrder);
   const sortOrders: SortOrder[] = [
     {
       value: "",
@@ -37,7 +38,7 @@ function SortSelector() {
   ];
 
   const currentSortOrder =
-    sortOrders.find((order) => order.value == gameQuery.sortOrder)?.label ||
+    sortOrders.find((order) => order.value == sortOrder)?.label ||
     "Order by: Relevance";
 
   return (
