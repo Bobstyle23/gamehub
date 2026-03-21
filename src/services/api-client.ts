@@ -6,6 +6,13 @@ export interface FetchResponse<T> {
   results: T[];
 }
 
+export interface FetchSingleDataResponse<T> {
+  id: number;
+  name: string;
+  slug: string;
+  description_raw: string;
+}
+
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   params: {
@@ -23,6 +30,12 @@ class APIClient<T> {
   getAll(requestConfig?: AxiosRequestConfig) {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, requestConfig)
+      .then((res) => res.data);
+  }
+
+  get(requestConfig?: AxiosRequestConfig) {
+    return axiosInstance
+      .get<FetchSingleDataResponse<T>>(this.endpoint, requestConfig)
       .then((res) => res.data);
   }
 }

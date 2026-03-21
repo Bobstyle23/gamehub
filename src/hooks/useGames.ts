@@ -13,6 +13,7 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   rating_top: number;
+  slug: string;
 }
 
 function useGames(pageSize?: number) {
@@ -34,7 +35,6 @@ function useGames(pageSize?: number) {
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
     },
-    staleTime: ms("24h"),
   });
 }
 
