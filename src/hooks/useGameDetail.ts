@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import APIClient, { FetchSingleDataResponse } from "../services/api-client";
+import APIClient from "../services/api-client";
 import ms from "ms";
+import { Game } from "./useGames";
+
+const apiClient = new APIClient<Game>(`/games`);
 
 export interface GameDetail {
   id: number;
@@ -9,11 +12,10 @@ export interface GameDetail {
   description_raw: string;
 }
 
-function useGameDetail(slug: string | undefined) {
-  const apiClient = new APIClient<GameDetail>(`games/${slug}`);
-  return useQuery<FetchSingleDataResponse<GameDetail>, Error>({
+function useGameDetail(slug: string) {
+  return useQuery({
     queryKey: ["gameDetail", slug],
-    queryFn: () => apiClient.get(),
+    queryFn: () => apiClient.get(slug!),
     staleTime: ms("24h"),
   });
 }

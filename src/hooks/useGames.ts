@@ -10,6 +10,7 @@ export interface Game {
   id: number;
   name: string;
   background_image: string;
+  description_raw: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   rating_top: number;
@@ -35,6 +36,7 @@ function useGames(pageSize?: number) {
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
     },
+    staleTime: ms("24h"),
   });
 }
 

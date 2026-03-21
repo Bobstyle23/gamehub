@@ -12,7 +12,7 @@ interface Props {
 
 function GameCard({ game }: Props) {
   return (
-    <Card _hover={{ boxShadow: "xl", transform: "translate: scale(5px)" }}>
+    <Card>
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
         <HStack justifyContent="space-between" marginBottom={3}>
