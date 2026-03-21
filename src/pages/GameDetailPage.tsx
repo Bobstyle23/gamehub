@@ -5,7 +5,7 @@ import useGameDetail from "../hooks/useGameDetail";
 function GameDetailPage() {
   const { slug } = useParams();
 
-  const { data, isLoading, error } = useGameDetail(slug);
+  const { data } = useGameDetail(slug);
 
   return (
     <Box padding={5}>

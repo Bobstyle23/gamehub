@@ -9,7 +9,7 @@ export interface GameDetail {
   description_raw: string;
 }
 
-function useGameDetail(slug: string | null) {
+function useGameDetail(slug: string | undefined) {
   const apiClient = new APIClient<GameDetail>(`games/${slug}`);
   return useQuery<FetchSingleDataResponse<GameDetail>, Error>({
     queryKey: ["gameDetail", slug],
