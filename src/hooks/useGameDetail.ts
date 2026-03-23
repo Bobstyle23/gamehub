@@ -5,13 +5,6 @@ import { Game } from "../entities/Game";
 
 const apiClient = new APIClient<Game>(`/games`);
 
-export interface GameDetail {
-  id: number;
-  name: string;
-  name_original: string;
-  description_raw: string;
-}
-
 function useGameDetail(slug: string) {
   return useQuery({
     queryKey: ["gameDetail", slug],
