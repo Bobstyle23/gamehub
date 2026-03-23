@@ -14,7 +14,7 @@ function GameDetailPage() {
   return (
     <Box padding={5}>
       <Heading>{detail?.name}</Heading>
-      <ExpandableText>{detail?.description_raw}</ExpandableText>
+      <ExpandableText>{detail?.description_raw || ""}</ExpandableText>
     </Box>
   );
 }
