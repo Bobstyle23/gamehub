@@ -1,20 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import APIClient, { FetchResponse } from "../services/api-client";
+import { GameTrailer } from "../entities/GameTrailer";
 
-export interface GameTrailer {
-  id: number;
-  name: string;
-  preview: string;
-  data: { [key: string]: string };
-}
+function useGameTrailer(gameId: number) {
+  const apiClient = new APIClient<GameTrailer>(`games/${gameId}/movies`);
 
-const apiClient = new APIClient<FetchResponse<GameTrailer>>("games");
-
-function useGameTrailer(id: number) {
-  return useQuery<FetchResponse<GameTrailer>, Error>({
-    queryKey: ["gameTrailer", id],
-    queryFn: () => apiClient.getTrailer(id, "movies"),
+  return useQuery({
+    queryKey: ["gameTrailer", gameId],
+    queryFn: () => apiClient.getAll(),
     staleTime: ms("24h"),
   });
 }

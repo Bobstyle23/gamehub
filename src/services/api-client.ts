@@ -31,12 +31,6 @@ class APIClient<T> {
       .get<T>(`${this.endpoint}/${id}`)
       .then((res) => res.data);
   }
-
-  getTrailer(id: number, section: string) {
-    return axiosInstance
-      .get<T>(`${this.endpoint}/${id}/${section}`)
-      .then((res) => res.data);
-  }
 }
 
 export default APIClient;
