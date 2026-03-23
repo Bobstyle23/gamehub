@@ -17,10 +17,10 @@ function GameDetailPage() {
       <Heading>{detail?.name}</Heading>
       <ExpandableText>{detail?.description_raw || ""}</ExpandableText>
       <GameAttributes
-        platforms={detail?.parent_platforms}
-        genres={detail?.genres}
-        metascore={detail?.metacritic}
-        publishers={detail?.publishers}
+        platforms={detail?.parent_platforms || []}
+        genres={detail?.genres || []}
+        metascore={detail?.metacritic || 0}
+        publishers={detail?.publishers || []}
       />
     </Box>
   );
