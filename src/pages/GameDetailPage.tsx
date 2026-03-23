@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import ExpandableText from "../components/ExpendableText";
 import GameAttributes from "../components/GameAttributes";
+import GameScreenShots from "../components/GameScreenshots";
 import GameTrailer from "../components/GameTrailer";
 import useGameDetail from "../hooks/useGameDetail";
 
@@ -20,6 +21,7 @@ function GameDetailPage() {
       <ExpandableText>{game?.description_raw || ""}</ExpandableText>
       <GameAttributes game={game!} />
       <GameTrailer gameId={game?.id!} />
+      <GameScreenShots gameId={game?.id!} />
     </Box>
   );
 }
