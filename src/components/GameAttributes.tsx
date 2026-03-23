@@ -1,49 +1,33 @@
-import { Platform } from "../entities/Platform";
-import { Genre } from "../entities/Genre";
-import { Grid, Heading, GridItem, Text } from "@chakra-ui/react";
-import { Publisher } from "../entities/Publisher";
+import { SimpleGrid, Text } from "@chakra-ui/react";
+import { Game } from "../entities/Game";
+import DefinitionItem from "./DefinitionItem";
 import CriticScore from "./CriticScore";
 
 interface Props {
-  platforms: { platform: Platform }[];
-  genres: Genre[];
-  metascore: number;
-  publishers: Publisher[];
+  game: Game;
 }
-function GameAttributes({ platforms, genres, metascore, publishers }: Props) {
+function GameAttributes({ game }: Props) {
   return (
-    <Grid templateColumns="repeat(2, 1fr)" gap={6} marginTop={6}>
-      <GridItem>
-        <Heading size="sm" color="gray" marginBottom={1}>
-          Platforms
-        </Heading>
-        {platforms.map(({ platform }) => (
+    <SimpleGrid columns={2} as="dl">
+      <DefinitionItem term="Platforms">
+        {game.parent_platforms?.map(({ platform }) => (
           <Text key={platform.id}>{platform.name}</Text>
         ))}
-      </GridItem>
-      <GridItem>
-        <Heading size="sm" color="gray" marginBottom={1}>
-          Metascore
-        </Heading>
-        <CriticScore score={metascore} />
-      </GridItem>
-      <GridItem>
-        <Heading size="sm" color="gray" marginBottom={1}>
-          Genres
-        </Heading>
-        {genres.map((genre) => (
+      </DefinitionItem>
+      <DefinitionItem term="Metascore">
+        <CriticScore score={game.metacritic ?? 0} />
+      </DefinitionItem>
+      <DefinitionItem term="Genres">
+        {game.genres.map((genre) => (
           <Text key={genre.id}>{genre.name}</Text>
         ))}
-      </GridItem>
-      <GridItem>
-        <Heading size="sm" color="gray" marginBottom={1}>
-          Publishers
-        </Heading>
-        {publishers.map((publisher) => (
+      </DefinitionItem>
+      <DefinitionItem term="Publishers">
+        {game.publishers.map((publisher) => (
           <Text key={publisher.id}>{publisher.name}</Text>
         ))}
-      </GridItem>
-    </Grid>
+      </DefinitionItem>
+    </SimpleGrid>
   );
 }
 

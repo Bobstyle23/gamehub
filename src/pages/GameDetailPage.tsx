@@ -1,12 +1,14 @@
-import { Box, Heading, Spinner } from "@chakra-ui/react";
+import { Box, Heading, Spinner, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import CriticScore from "../components/CriticScore";
+import DefinitionItem from "../components/DefinitionItem";
 import ExpandableText from "../components/ExpendableText";
 import GameAttributes from "../components/GameAttributes";
 import useGameDetail from "../hooks/useGameDetail";
 
 function GameDetailPage() {
   const { slug } = useParams();
-  const { data: detail, isLoading, error } = useGameDetail(slug!);
+  const { data: game, isLoading, error } = useGameDetail(slug!);
 
   if (isLoading) return <Spinner margin={5} />;
 
@@ -14,14 +16,9 @@ function GameDetailPage() {
 
   return (
     <Box padding={5}>
-      <Heading>{detail?.name}</Heading>
-      <ExpandableText>{detail?.description_raw || ""}</ExpandableText>
-      <GameAttributes
-        platforms={detail?.parent_platforms || []}
-        genres={detail?.genres || []}
-        metascore={detail?.metacritic || 0}
-        publishers={detail?.publishers || []}
-      />
+      <Heading>{game?.name}</Heading>
+      <ExpandableText>{game?.description_raw || ""}</ExpandableText>
+      <GameAttributes game={game} />
     </Box>
   );
 }
