@@ -1,5 +1,5 @@
 import { Platform } from "../entities/Platform";
-import { Genre } from "../hooks/useGenres";
+import { Genre } from "../entities/Genre";
 import { Grid, Heading, GridItem, Text } from "@chakra-ui/react";
 import { Publisher } from "../entities/Publisher";
 import CriticScore from "./CriticScore";
